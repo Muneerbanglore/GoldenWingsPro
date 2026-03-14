@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gw-gold: #D4AF37;
+  --color-gw-gold-dark: #B8860B;
+  --color-gw-gold-light: #F4D03F;
+  
+  --color-gw-black: #000000;
+  --color-gw-dark: #0A0A0A;
+  --color-gw-dark-gray: #1A1A1A;
+  
+  --color-gw-white: #FFFFFF;
+  
+  --font-serif: "Playfair Display", ui-serif, Georgia;
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2); }
+    to { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4); }
+  }
+}
+
+:root {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-weight: 400;
+  color: #E0E0E0;
+  background-color: var(--color-gw-black);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-gw-black);
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+    color: var(--color-gw-white);
+  }
+}
+
+/* Creative Utility Classes */
+.text-glow-gold {
+  animation: var(--animate-glow);
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+.dark-mesh-gradient {
+  background-color: var(--color-gw-black);
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(38, 64%, 52%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(0, 0%, 10%, 1) 0px, transparent 50%);
+}
+
+.glass-dark {
+  @apply bg-black/80 backdrop-blur-2xl border-b border-white/5 shadow-2xl;
+}
+
+.premium-card-dark {
+  @apply bg-gw-dark-gray border border-white/5 rounded-3xl p-8 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] hover:border-gw-gold/30 hover:-translate-y-2;
+}
+
+.btn-premium {
+  @apply relative overflow-hidden bg-gw-gold hover:bg-gw-gold-dark text-gw-black font-black py-4 px-10 rounded-full transition-all duration-500 shadow-xl hover:shadow-gw-gold/40 flex items-center justify-center space-x-2;
+}
+
+.btn-premium::after {
+  content: '';
+  @apply absolute inset-0 bg-white/20 translate-x-[-100%] transition-transform duration-500 skew-x-12;
+}
+
+.btn-premium:hover::after {
+  @apply translate-x-[100%];
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-serif font-bold text-gw-white mb-4 relative inline-block;
+}
+
+.section-title::after {
+  content: '';
+  @apply absolute -bottom-4 left-0 w-16 h-1 bg-gw-gold rounded-full;
+}
+
+/* Navbar specific refinements for dark theme */
+.nav-link-premium {
+  @apply relative text-white/70 font-bold tracking-widest transition-colors duration-300 hover:text-gw-gold uppercase text-xs;
+}
+
+.nav-link-premium::after {
+  content: '';
+  @apply absolute bottom-[-4px] left-0 w-0 h-[2px] bg-gw-gold transition-all duration-300;
+}
+
+.nav-link-premium:hover::after {
+  @apply w-full;
+}
+
+.input-luxury {
+  @apply w-full px-8 py-5 rounded-2xl bg-gw-dark-gray border border-white/10 text-white focus:border-gw-gold focus:ring-4 focus:ring-gw-gold/5 outline-none transition-all font-medium placeholder:text-gray-600;
+}
