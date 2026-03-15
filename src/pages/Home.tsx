@@ -83,7 +83,7 @@ const Home: React.FC = () => {
             </motion.h1>
 
             <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-400 mb-10 font-light leading-relaxed max-w-2xl">
-              From Deira to the world. We don't just process papers; we build the legal foundation for your next empire in the heart of the UAE.
+              From Dubai to the world. We don't just process papers; we build the legal foundation for your next empire in the heart of the UAE.
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6">
